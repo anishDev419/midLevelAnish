@@ -1,0 +1,47 @@
+<div class="register-card">
+
+    <div class="card">
+        <div class="card-body"  >
+    
+            <form >
+                <p style="margin-bottom: 10px;" > USER LIST </p>
+                
+                <div *ngFor="let user of userList" >
+                    <div class="card" style="margin-bottom: 5px;" >
+                        <div class="card-body" >
+                            <div>
+
+                                <div style="display: flex; justify-content: space-between;"  >
+                                    <div style="display: flex; flex-direction: column; " >
+                                        <p>{{ user.username }}</p>
+                                        <p> Publications: {{ user.posts.length }} </p> 
+                                    </div>
+                                    <div>
+                                        <button *ngIf="user.suspended == false" class="btn" type="button" id="{{user.username}}" (click)="openSus($event)"> SUSPEND </button>
+                                        <button *ngIf="user.suspended == true" class="btn" type="button" id="{{user.username}}" > UNSUSPEND </button>
+                                        <button *ngIf="deletePerm" class="btn" type="button" value="{{user.username}}" name="{{user.username}}" id="{{user.username}}" (click)="deleteUser($event)" >DELETE</button>
+                                    </div>
+                                </div>
+                                <div style="margin-top: 10px; margin-bottom: 5px;" >
+                                    <div *ngIf="user.pSuspended == true" >
+                                        <span style="text-decoration-color: red;" > * THIS USER IS PERMANENTLY SUSPENDED  </span> 
+                                    </div>
+                                </div>
+                                <div style="text-align: end;" >
+                                    <span style="text-decoration: underline; cursor: pointer;" id="{{user.username}}" (click)="routeUserDetails($event)" > View Full Details-->> </span> 
+                                </div>
+
+                            </div>
+                        </div>
+                      </div>
+                </div>
+            </form>
+        </div>
+
+        
+
+
+    </div>
+
+
+</div>

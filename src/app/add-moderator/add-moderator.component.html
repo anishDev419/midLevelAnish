@@ -1,0 +1,78 @@
+<div class="register-card">
+
+    <div class="card">
+        <div class="card-body" *ngIf="stepOne" >
+    
+            <form class="form" [formGroup]="registerForm" (ngSubmit)="onSubmit()" >
+                <h1 class="h3 mb-3 fw-normal">Creating New User</h1>
+
+                
+                <div class="form-floating">
+                    <input type="email" id="email" class="form-control"
+                          formControlName="email" required>
+                    <label for="floatingInput">Email address</label>
+                </div>
+                <div *ngIf="emailCheck" style="margin-bottom: 10px;" >
+                     * {{emailErrorString}}
+                </div>
+
+                <div class="form-floating">
+                    <input type="text" formControlName="username" id="username" class="form-control" required >
+                    <label for="floatingInput"> Display Name </label>
+                </div>
+                <div *ngIf="nameCheck" style="margin-bottom: 10px;" >
+                    * Display Name is Required
+                </div>
+
+                <div *ngIf="nameDub" style="margin-bottom: 10px;" >
+                    * This Username is Already Taken
+                </div>
+
+                <div class="form-floating">
+                    <input type="password" formControlName="password" id="password" class="form-control" required >
+                    <label for="floatingInput"> Password </label>
+                </div>
+                <div *ngIf="passwordCheck" style="margin-bottom: 10px;" >
+                    * Password is Required
+                </div>
+
+                <div class="form-floating">
+                    <input type="password" formControlName="cPassword" id="cPassword" class="form-control" required >
+                    <label for="floatingInput"> Confirm Password </label>
+                </div>
+                <div *ngIf="passwordDub" style="margin-bottom: 10px;" >
+                    * Password Does Not Match
+                </div>
+
+                <button class="w-100 btn btn-lg btn-primary" type="submit">Next</button>
+
+                <div>
+                    <p style="text-align: center; margin-top: 10px; text-decoration: underline;" > <a routerLink="" > Already have an account? </a>  </p>
+                  </div>
+
+            </form>
+        </div>
+
+        
+        <div class="card-body" *ngIf="!stepOne" >  
+            <h1 class="h3 mb-3 fw-normal">Select Your Display Picture</h1>
+            <br>
+
+            <div *ngIf="filePath!=''" style="text-align: center;" >
+                <img [src]="filePath" alt="SelectedFile" height="200" >
+            </div>
+
+            <div style="margin-top: 10px; margin-bottom: 10px; " enctype="multipart/form-data" >
+                <input type="file" (change)="changeDP($event)" name="displayPicture" >
+            </div>
+            <button class="w-100 btn btn-lg btn-primary" type="button" (click)="onUpload()" >Upload</button>
+            <div style="margin-top: 10px; text-align: center; " >
+                <p style="text-decoration: underline;" > <a style="cursor: pointer;" (click)="registerLogin()" > SKIP >> </a> </p> 
+            </div>
+        </div>
+
+
+    </div>
+
+
+</div>

@@ -1,0 +1,26 @@
+
+<div class="container">
+    <div style="text-align: center; border: 1px solid black; " >
+        <div style="margin-bottom: 10px;" >
+            <h1>Welcome</h1>
+        </div>
+        <br> <br>
+        <div class="content-container" style="display: flex;" >
+            <div class="col-sm-3" style="border: 1px solid; display: flex; flex-direction: column; "  >
+                <div *ngIf="showAddModerator" >
+                    <button class="btn" (click)="routeAddModerator()" >Add Moderator</button>
+                </div>
+                <div *ngIf="showUserList" >
+                    <button class="btn" (click)="routeUserList()" >Show All Users</button>
+                </div>
+
+            </div>
+            <div class="col-sm-6" style="border: 1px solid;" >
+                <button (click)="addPost()" >Add Post</button>     
+            </div>
+            <div class="col-sm-3" style="border: 1px solid;" >
+                
+            </div>
+        </div>
+    </div>
+</div>
